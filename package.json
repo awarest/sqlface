@@ -1,10 +1,30 @@
 {
   "name": "sqlface",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:awarest/sqlface.git",
-  "author": "Brian Jorden <brian@awaresolutions.com>",
+  "author": "Aware Solutions, Inc.",
+  "contributors": [
+    "Brian Jorden <brian@awaresolutions.com>"
+  ],
   "license": "MIT",
+  "scripts": {
+    "start": "yarn run serve",
+    "build": "yarn run build-ts",
+    "serve": "node dist/server.js",
+    "watch-node": "nodemon dist/server.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"blue.sbold,green.bold\" \"yarn run watch-ts\" \"yarn run watch-node\"",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "debug": "yarn run build && yarn run watch-debug",
+    "serve-debug": "nodemon --inspect dist/server.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"blue.sbold,green.bold\" \"yarn run watch-ts\" \"yarn run serve-debug\""
+  },
+  "engines": {
+    "node": ">= 12.8.1",
+    "npm": ">= 6.10.2",
+    "yarn": ">= 1.15.2"
+  },
   "dependencies": {
     "dotenv": "^8.1.0",
     "mssql": "^5.1.0",
@@ -14,7 +34,7 @@
     "@types/dotenv": "^6.1.1",
     "@types/mssql": "^4.0.16",
     "@types/node": "^12.7.2",
-    "@types/shelljs": "^0.8.5",
-    "shelljs": "^0.8.3"
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.1"
   }
 }

@@ -1,3 +1,10 @@
+# Built Files
+dist
+
+####################################################
+### Below is the GitHub node project suggestions ###
+####################################################
+
 # Logs
 logs
 *.log
